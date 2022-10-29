@@ -8,11 +8,12 @@ const App = () => {
 
   useEffect(() => {
     restart();
-  });
+  }, []);
 
   function restart() {
     const newBoard = new Board();
     newBoard.initCells();
+    newBoard.addFigures();
     setBoard(newBoard);
   }
 

@@ -24,6 +24,12 @@ export class Board {
     }
   }
 
+  public getCopyBoard(): Board {
+    const newBoard = new Board();
+    newBoard.cells = this.cells;
+    return newBoard;
+  }
+
   public highlightCells(selectedCell: Cell | null) {
     for (let i = 0; i < this.cells.length; i++) {
       const row = this.cells[i];

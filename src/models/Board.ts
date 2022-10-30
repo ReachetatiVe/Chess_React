@@ -1,11 +1,11 @@
 import {Colors} from "./Colors";
 import {Cell} from "./Cell";
-import { Bishop } from "./figures/Bishop";
-import { King } from "./figures/King";
-import { Knight } from "./figures/Knight";
-import { Pawn } from "./figures/Pawn";
-import { Queen } from "./figures/Queen";
-import { Rook } from "./figures/Rook";
+import {Bishop} from "./figures/Bishop";
+import {King} from "./figures/King";
+import {Knight} from "./figures/Knight";
+import {Pawn} from "./figures/Pawn";
+import {Queen} from "./figures/Queen";
+import {Rook} from "./figures/Rook";
 
 export class Board {
   cells: Cell[][] = [];
@@ -21,6 +21,16 @@ export class Board {
         }
       }
       this.cells.push(row);
+    }
+  }
+
+  public highlightCells(selectedCell: Cell | null) {
+    for (let i = 0; i < this.cells.length; i++) {
+      const row = this.cells[i];
+      for (let j = 0; j < row.length; j++) {
+        const target = row[j];
+        target.available = !!selectedCell?.figure?.canMove(target);
+      }
     }
   }
 
